@@ -49,6 +49,9 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: microposts2_production
   username: microposts2
   password: <%= ENV['MICROPOSTS2_DATABASE_PASSWORD'] %>
