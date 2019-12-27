@@ -21,10 +21,6 @@ class MicropostsController < ApplicationController
   end
   
   
-  
-  def liked
-  end
-  
   private
   
   def micropost_params
