@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show, :destroy, :followings, :followers]
+  before_action :require_user_logged_in, only: [:index, :show, :destroy, :edit, :update, :followings, :followers]
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(25)
@@ -26,6 +26,23 @@ class UsersController < ApplicationController
       render :new
     end
   end
+  
+  def edit
+    @user = current_user
+  end
+  
+  def update
+    @user = current_user
+    
+    if @user.update(user_params)
+      flash[:success] = '情報を更新しました'
+      redirect_to @user
+    else
+      flash.now[:danger] = '更新されませんでした'
+      render :edit
+    end
+  end
+  
   
   def destroy
     @user = current_user

@@ -7,8 +7,12 @@
       <div class="card-body">
         <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
       </div>
-    </div>
     <%= render 'relationships/follow_button', user: @user %>
+    <% if @user == current_user %>
+      <%= link_to 'edit your profile', edit_user_path(@user),class: 'btn btn-secondary btn-sm' %>
+    <% end %>
+    </div>
+    
   </aside>
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
