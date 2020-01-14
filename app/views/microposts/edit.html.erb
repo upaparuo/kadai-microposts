@@ -1,0 +1,12 @@
+<h1>マイクロポスト編集ページ</h1>
+
+<div class="row">
+    <aside class="col-sm-8">
+      <%= form_with(model: @micropost, local: true) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :content, class: 'form-control', rows: 7 %>
+        </div>
+        <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+      <% end %>
+    </aside>
+</div>

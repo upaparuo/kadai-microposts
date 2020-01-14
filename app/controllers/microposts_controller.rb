@@ -13,6 +13,22 @@ class MicropostsController < ApplicationController
       render 'toppages/index'
     end
   end
+  
+  def edit
+    @micropost = Micropost.find(params[:id])
+  end
+  
+  def update
+    @micropost = Micropost.find(params[:id])
+    
+    if @micropost.update(micropost_params)
+      flash[:success] = "投稿を更新しました"
+      redirect_to root_url
+    else
+      flash.now[:danger] = "更新されませんでした"
+      render :edit
+    end
+  end
 
   def destroy
     @micropost.destroy
